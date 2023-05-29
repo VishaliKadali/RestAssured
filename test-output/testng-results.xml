@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-05-24T13:59:21 IST" name="Default suite" finished-at="2023-05-24T13:59:36 IST" duration-ms="15477">
+    <groups>
+    </groups>
+    <test started-at="2023-05-24T13:59:21 IST" name="Default test" finished-at="2023-05-24T13:59:36 IST" duration-ms="15477">
+      <class name="week3.day2.chaining.EditIncident">
+        <test-method signature="editIncident()[pri:0, instance:week3.day2.chaining.EditIncident@34f7cfd9]" started-at="2023-05-24T13:59:32 IST" name="editIncident" finished-at="2023-05-24T13:59:36 IST" depends-on-methods="week3.day2.chaining.CreateIncident.createIncident" duration-ms="4360" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editIncident -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:week3.day2.chaining.EditIncident@34f7cfd9]" started-at="2023-05-24T13:59:32 IST" name="setup" finished-at="2023-05-24T13:59:32 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:week3.day2.chaining.EditIncident@34f7cfd9]" started-at="2023-05-24T13:59:36 IST" name="tearDown" finished-at="2023-05-24T13:59:36 IST" duration-ms="15" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- week3.day2.chaining.EditIncident -->
+      <class name="week3.day2.chaining.CreateIncident">
+        <test-method is-config="true" signature="setup()[pri:0, instance:week3.day2.chaining.CreateIncident@932bc4a]" started-at="2023-05-24T13:59:21 IST" name="setup" finished-at="2023-05-24T13:59:21 IST" duration-ms="747" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="createIncident()[pri:0, instance:week3.day2.chaining.CreateIncident@932bc4a]" started-at="2023-05-24T13:59:21 IST" name="createIncident" finished-at="2023-05-24T13:59:32 IST" duration-ms="10294" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createIncident -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:week3.day2.chaining.CreateIncident@932bc4a]" started-at="2023-05-24T13:59:32 IST" name="tearDown" finished-at="2023-05-24T13:59:32 IST" duration-ms="31" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- week3.day2.chaining.CreateIncident -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
