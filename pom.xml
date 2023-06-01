@@ -33,20 +33,25 @@
 			<version>7.4.0</version>
 		</dependency>
 
-		<!-- cucumber-reporting
+		<!-- cucumber-reporting <dependency> <groupId>net.masterthought</groupId> 
+			<artifactId>cucumber-reporting</artifactId> <version>5.5.4</version> </dependency> 
+			cucumber-html-reporter <dependency> <groupId>com.github.temyers</groupId> 
+			<artifactId>cucumber-jvm-parallel-plugin</artifactId> <version>6.2.2</version> 
+			</dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
 		<dependency>
-			<groupId>net.masterthought</groupId>
-			<artifactId>cucumber-reporting</artifactId>
-			<version>5.5.4</version>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>5.3.0</version>
 		</dependency>
 
-		cucumber-html-reporter
 		<dependency>
-			<groupId>com.github.temyers</groupId>
-			<artifactId>cucumber-jvm-parallel-plugin</artifactId>
-			<version>6.2.2</version>
-		</dependency> -->
-		
-		
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock-jre8-standalone</artifactId>
+			<version>2.35.0</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 </project>

@@ -56,7 +56,7 @@ public class LearnAssertions {
 //      Step 3- construct the request (params, auth, etc)
 		RestAssured.authentication = RestAssured.basic("admin", "Us/xZ85k@IyN");
 
-		RequestSpecification input = RestAssured.given().contentType(ContentType.JSON);
+		RequestSpecification input = RestAssured.given().contentType(ContentType.JSON).log().all();
 		Response response=input.get();
 		response.then().assertThat().body("result.number", Matchers.hasItem("INC0010177"));
 		
