@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="week5.day2.mocking.Stub">
+      <class name="week3.day2.TraversingWithSingle">
         <methods>
-          <include name="stubIncident"/>
-          <include name="createIncident"/>
+          <include name="traverseCreateIncident"/>
         </methods>
-      </class> <!-- week5.day2.mocking.Stub -->
+      </class> <!-- week3.day2.TraversingWithSingle -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

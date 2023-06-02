@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-01T13:32:35 IST" name="Default suite" finished-at="2023-06-01T13:32:44 IST" duration-ms="8767">
+  <suite started-at="2023-06-02T22:41:43 IST" name="Default suite" finished-at="2023-06-02T22:41:53 IST" duration-ms="10009">
     <groups>
     </groups>
-    <test started-at="2023-06-01T13:32:35 IST" name="Default test" finished-at="2023-06-01T13:32:44 IST" duration-ms="8767">
-      <class name="week3.day1.GetIncidentQueryParamsMultiple">
-        <test-method signature="getIncidents()[pri:0, instance:week3.day1.GetIncidentQueryParamsMultiple@29e495ff]" started-at="2023-06-01T13:32:35 IST" name="getIncidents" finished-at="2023-06-01T13:32:44 IST" duration-ms="8723" status="PASS">
+    <test started-at="2023-06-02T22:41:43 IST" name="Default test" finished-at="2023-06-02T22:41:53 IST" duration-ms="10009">
+      <class name="week3.day2.TraversingWithMany">
+        <test-method signature="traverseCreateIncident()[pri:0, instance:week3.day2.TraversingWithMany@29e495ff]" started-at="2023-06-02T22:41:43 IST" name="traverseCreateIncident" finished-at="2023-06-02T22:41:53 IST" duration-ms="9978" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getIncidents -->
-      </class> <!-- week3.day1.GetIncidentQueryParamsMultiple -->
+        </test-method> <!-- traverseCreateIncident -->
+      </class> <!-- week3.day2.TraversingWithMany -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

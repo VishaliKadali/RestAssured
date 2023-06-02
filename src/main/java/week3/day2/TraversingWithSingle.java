@@ -1,5 +1,9 @@
 package week3.day2;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
@@ -16,13 +20,18 @@ public class TraversingWithSingle {
 
 //      Step 3- construct the request (params, auth, etc)
 		RestAssured.authentication = RestAssured.basic("admin", "Us/xZ85k@IyN");
-
-		RequestSpecification request = RestAssured.given().contentType(ContentType.JSON);
+		Map<String, String> queryMap=new HashMap<String,String>();
+		queryMap.put("sysparm_fields", "Category, sys_id, number");
+		RequestSpecification request = RestAssured.given().queryParams(queryMap).contentType(ContentType.JSON);
 		Response response=request.post();
 		
 		String sys_id=response.jsonPath().get("result.sys_id");
 		System.out.println("Value of sys_id is " +sys_id);
-		//response.then().log().all();
+		String number=response.jsonPath().getString("result.number");
+		System.out.println("Incident Number is " +number);
+		response.prettyPrint();
+		response.then().assertThat().body("result.number",Matchers.containsString("INC"));
+		response.then().log().all();
 	}
 
 
