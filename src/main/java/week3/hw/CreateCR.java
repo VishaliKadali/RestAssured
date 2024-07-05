@@ -1,6 +1,8 @@
 package week3.hw;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.testng.annotations.Test;
 
@@ -13,7 +15,10 @@ public class CreateCR extends week3.hw.BaseClass{
 
 	@Test
 	public void getCR() {
-		
+		Map<String, String> queryMap = new HashMap<String,String>();
+		  queryMap.put("sysparm_fields", "number,category");
+		  queryMap.put("category","Software");
+			request.queryParams(queryMap);
 			response=request.get("change_request");
 			//sys_id=response.jsonPath().get("result[0].sys_id");
 			List<Object> IncidentNumbers = response.jsonPath().getList("response.number");

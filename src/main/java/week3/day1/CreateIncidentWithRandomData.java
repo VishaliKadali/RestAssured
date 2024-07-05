@@ -23,8 +23,11 @@ public class CreateIncidentWithRandomData {
 		float randomfloat=random.nextFloat();
 		System.out.println(randomfloat);
 		
-		RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
-		RestAssured.authentication=RestAssured.basic("admin", "Us/xZ85k@IyN");
+		long randomlong=random.nextLong();
+		System.out.println(randomlong);
+		
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
+		RestAssured.authentication=RestAssured.basic("admin", "eJ70Jq$ERc+p");
 		
 		RequestSpecification inputRequest = RestAssured.given()
 					.contentType(ContentType.JSON)

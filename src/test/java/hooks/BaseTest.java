@@ -2,16 +2,18 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.restassured.RestAssured;
 
 public class BaseTest {
 	 
-	@Before
-	public void startTest() {
-		System.out.println("Start the test");
-	}
+	/*
+	 * @Before public void startTest() { System.out.println("Start the test"); }
+	 * 
+	 * @After public void endTest() { System.out.println("End of the test"); }
+	 */
 	
-	@After
-	public void endTest() {
-		System.out.println("End of the test");
+	public void setup() {
+		RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
+		RestAssured.authentication=RestAssured.basic("admin","");
 	}
 }

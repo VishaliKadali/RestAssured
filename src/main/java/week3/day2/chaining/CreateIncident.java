@@ -15,6 +15,7 @@ public class CreateIncident extends BaseClass{
 				+ "}").post("incident");
 		sys_id=response.jsonPath().get("result.sys_id");
 		System.out.println("Sys_id is "+sys_id);
+		System.out.println(response.statusLine());
 		response.then().assertThat().statusCode(201);
 	}
 	

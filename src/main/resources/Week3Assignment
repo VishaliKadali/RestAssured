@@ -1,0 +1,27 @@
+Rest Assured Assignments - Should have status code verifications
+
+1)Update any change_request with the below short description 
+	"using PUT method for hamcrest" using the PUT method and ensure the update is successful
+
+2)Update any change_request with the short_description "using patch method for hamcrest" 
+	using patch method ensure that word hamcrest is present in the response and the number is equal to "INC0000060"
+	
+3)Delete any change_request and verify the status line is equal to "Http/1.1 202 No Content"
+
+
+b)Explore the concept of static in base class in chaining
+	What is static in java
+	why are we giving the static keyword for java's main method
+	Why is that we are using in our base class in chaining
+
+c)Chaining concept in service-now(Should use base class concept and status code verification)
+		Create
+		Edit 
+		Delete
+		Get
+		
+d)Chaining concept in JIRA
+		Create issue
+		Edit issue
+		Delete issue
+		Get issue

@@ -9,17 +9,18 @@ import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-
+import static org.hamcrest.Matchers.is;
 public class CreateIncwithSys_idCategoryHW {
 
 	@Test
 	public void createIncidentwithSys_idCategory() {
 
-		RestAssured.baseURI = "https://dev104781.service-now.com/api/now/table/incident";
+		RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
 
 		// Construct the request (params, auth etc)
-		RestAssured.authentication = RestAssured.basic("admin", "Us/xZ85k@IyN");
+		RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
 
 		Map<String, String> queryMap = new HashMap<String, String>();
 		queryMap.put("sysparm_fields", "number,category,sys_id");
@@ -30,7 +31,8 @@ public class CreateIncwithSys_idCategoryHW {
 				.body("{\r\n" + "    \"short_description\" : \"This is created by RestAssured\",\r\n"
 						+ "   \"caller_id\": \"681ccaf9c0a8016400b98a06818d57c7\"\r\n" + "}")
 				.log().all();
-
+		
+		
 		Response response = inputRequest.post();
 
 		response.prettyPrint();
@@ -38,6 +40,8 @@ public class CreateIncwithSys_idCategoryHW {
 		String incidentNumber = response.jsonPath().getString("result.number");
 		String sys_id = response.jsonPath().get("result.sys_id");
 		String category = response.jsonPath().getString("result.category");
+		
+		
 
 		response.then().assertThat().body("result.number", Matchers.containsStringIgnoringCase(incidentNumber));
 		response.then().assertThat().body("result.sys_id", Matchers.containsStringIgnoringCase(sys_id));

@@ -16,8 +16,8 @@ public class BaseClass {
 	
 	@BeforeMethod
 	public void setup() {
-		RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/";
-		RestAssured.authentication=RestAssured.basic("admin","Us/xZ85k@IyN");
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/";
+		RestAssured.authentication=RestAssured.basic("admin","eJ70Jq$ERc+p");
 		request=RestAssured.given().contentType(ContentType.JSON).log().all();
 		//request=RestAssured.given().log().all();
 	}

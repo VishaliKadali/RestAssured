@@ -13,12 +13,12 @@ public class IncidentPUT {
 	@Test
 	public void putincident() {
 		
-RestAssured.baseURI = "https://dev104781.service-now.com/api/now/table/incident";
+RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
         
 //      Step 3- construct the request (params, auth, etc)
-      RestAssured.authentication = RestAssured.basic("admin", "Us/xZ85k@IyN");
+      RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
       
-      RequestSpecification putRequest = RestAssured.given()
+      RequestSpecification inputRequest = RestAssured.given()
     		  								.contentType(ContentType.JSON)
     		  								.body("{\r\n"
     		  										+ "    \"category\": \"Hardware\",\r\n"
@@ -26,7 +26,7 @@ RestAssured.baseURI = "https://dev104781.service-now.com/api/now/table/incident"
     		  										+ "}");
       
 //      Step 4 - send the request(http methods)
-      Response response = putRequest.put();
+      Response response = inputRequest.put();
       
 //      Step 5 - Validate the response
       response.prettyPrint();

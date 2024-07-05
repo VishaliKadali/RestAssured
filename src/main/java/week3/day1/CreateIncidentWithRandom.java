@@ -16,9 +16,9 @@ public class CreateIncidentWithRandom {
 	public void createIncidentWithRandom() {
 		
 		/*
-		 * Using the Random class, we generate a random index within the range of the
-		 * characters string length. We retrieve the character at the random index from
-		 * the characters string. We append the random character to the StringBuilder.
+		 * Using the Random class, we generate a random index within the range of the characters string length.
+		 * We retrieve the character at the random index from the characters string. 
+		 * We append the random character to the StringBuilder.
 		 * Repeat steps 3-5 until the desired length of the random data is achieved.
 		 * Finally, we convert the StringBuilder to a string and print the generated
 		 * random data.
@@ -36,8 +36,8 @@ public class CreateIncidentWithRandom {
 		String randomData = sb.toString();
         System.out.println("Random Data: " + randomData);
         
-        RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
-        RestAssured.authentication=RestAssured.basic("admin", "Us/xZ85k@IyN");
+        RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
+        RestAssured.authentication=RestAssured.basic("admin", "eJ70Jq$ERc+p");
         
         RequestSpecification inputRequest=RestAssured.given().contentType(ContentType.JSON).body("{\r\n"
         		+ "    \"description\": \"My first test with Rest Assured "+randomData+"\",\r\n"
@@ -47,7 +47,6 @@ public class CreateIncidentWithRandom {
         response.prettyPrint();
         response.then().assertThat().body("result.number", Matchers.containsString("INC"));
 	}
-	
 
 
 }

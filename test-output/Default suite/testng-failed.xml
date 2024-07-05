@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="week3.day2.TraversingWithSingle">
+      <class name="week3.hw.CreateCR">
         <methods>
-          <include name="traverseCreateIncident"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="updateCR"/>
+          <include name="deleteCR"/>
+          <include name="createCR"/>
         </methods>
-      </class> <!-- week3.day2.TraversingWithSingle -->
+      </class> <!-- week3.hw.CreateCR -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,11 +1,12 @@
 package steps;
 
 import java.util.Map;
+
 import java.util.Map.Entry;
 import java.util.Random;
 
 import org.hamcrest.Matchers;
-
+import static org.hamcrest.Matchers.equalTo;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -123,23 +124,24 @@ public class TestSteps {
 
 	
 	//validating response using data table
-	/*
-	 * @Then("validate the response for below") public void
-	 * validate_the_response_for_below(DataTable dTable) { //converting dataTable as
-	 * a Map entry for <K,V> pair Map<String,String> mapValues = dTable.asMap();
-	 * //Entry is a collection view of Map. Converting entire Map above to each
-	 * entrySet for(Entry<String,String> eachEntry : mapValues.entrySet()) {
-	 * response.then().body(eachEntry.getKey(),
-	 * Matchers.containsString(eachEntry.getValue())); }
-	 * response.then().assertThat().statusCode(201).
-	 * and().body("result.task_effective_number", Matchers.hasLength(10)); }
-	 */
-	/*
-	 * public void validateResponseStringForMulti(DataTable dt) { Map<String,
-	 * String> asMap = dt.asMap(); for (Entry<String, String> eachEntry :
-	 * asMap.entrySet()) { response.then().body(eachEntry.getKey(),
-	 * equalTo(eachEntry.getValue())); } }
-	 */
+	
+	  @Then("validate the response for below") public void
+	  validate_the_response_for_below(DataTable dTable) { 
+		  //converting dataTable as a Map entry for <K,V> pair 
+		  Map<String,String> mapValues = dTable.asMap();
+	  //Entry is a collection view of Map. Converting entire Map above to each entrySet 
+	  for(Entry<String,String> eachEntry : mapValues.entrySet()) {
+	  response.then().body(eachEntry.getKey(),Matchers.containsString(eachEntry.getValue())); }
+	  response.then().assertThat().statusCode(201).and().body("result.task_effective_number", Matchers.hasLength(10)); }
+	 
+	
+	  public void validateResponseStringForMulti(DataTable dt) { 
+		  Map<String,String> asMap = dt.asMap(); 
+		  for (Entry<String, String> eachEntry : asMap.entrySet()) { 
+		  response.then().body(eachEntry.getKey(), equalTo(eachEntry.getValue())); 
+		  } 
+	  }
+	 
 
 	@Given("send the post request")
 	public void send_the_post_request() {

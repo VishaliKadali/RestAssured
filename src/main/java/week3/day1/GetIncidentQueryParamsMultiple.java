@@ -14,10 +14,10 @@ public class GetIncidentQueryParamsMultiple {
 	@Test
 	public void getIncidents() {
 		
-		RestAssured.baseURI = "https://dev104781.service-now.com/api/now/table/incident";
+		RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
         
 //      Step 3- construct the request (params, auth, etc)
-      RestAssured.authentication = RestAssured.basic("admin", "Us/xZ85k@IyN");
+      RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
       
  //Create a map to add mutiple values
       Map<String,String> queryMap=new HashMap<String,String>();

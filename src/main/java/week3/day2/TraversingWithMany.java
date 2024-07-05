@@ -15,17 +15,17 @@ public class TraversingWithMany {
 	@Test
 	public void traverseCreateIncident() {
 
-		RestAssured.baseURI = "https://dev104781.service-now.com/api/now/table/incident";
+		RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
 
 //      Step 3- construct the request (params, auth, etc)
-		RestAssured.authentication = RestAssured.basic("admin", "Us/xZ85k@IyN");
+		RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
 
 		RequestSpecification request = RestAssured.given().contentType(ContentType.JSON).log().all();
 		Response response=request.get();
 		
 		List<String> sys_id=response.jsonPath().getList("result.sys_id");
 		System.out.println("Count of Sys_id " +sys_id.size());
-		System.out.println(" ***********This is just to check how the result is bsing displayed******** "+response.jsonPath().get("result.sys_id[2]"));
+		//System.out.println(" ***********This is just to check how the result is being displayed******** "+response.jsonPath().get("result.sys_id[2]"));
 		response.then().log().all();
 	}
 }

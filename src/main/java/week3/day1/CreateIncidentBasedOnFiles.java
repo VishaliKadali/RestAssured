@@ -17,10 +17,10 @@ public class CreateIncidentBasedOnFiles {
 	
 	@Test
 	public void createIncidentBasedonFile() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub4
 		String filePath;
-		RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
-		RestAssured.authentication=RestAssured.basic("admin", "Us/xZ85k@IyN");
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
+		RestAssured.authentication=RestAssured.basic("admin", "eJ70Jq$ERc+p");
 		try {
 		String path="./src/test/resources";
 		
