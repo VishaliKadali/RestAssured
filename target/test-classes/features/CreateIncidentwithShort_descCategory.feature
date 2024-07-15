@@ -17,3 +17,4 @@ Examples:
 |2|This is Second Request|hardware|
 #Third request
 |3|This is Third Request|inquiry|
+|3|This is Third Request|inquiry|

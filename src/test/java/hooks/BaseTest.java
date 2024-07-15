@@ -13,7 +13,7 @@ public class BaseTest {
 	 */
 	
 	public void setup() {
-		RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
-		RestAssured.authentication=RestAssured.basic("admin","");
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
+		RestAssured.authentication=RestAssured.basic("admin","eJ70Jq$ERc+p");
 	}
 }

@@ -1,6 +1,6 @@
 Feature: ServiceNow Incident Management
 
-Scenario: Get all the incidents with Query Parameter
+Scenario: Get all the incidents with Query Parameters
 
 Given set the endpoint
 And add the auth

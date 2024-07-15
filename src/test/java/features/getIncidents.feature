@@ -1,4 +1,4 @@
-Feature: Incident Management
+Feature: ServiceNow Incident Management
 
 Scenario: Get Incident by sys_id
 Given set the endpoint
