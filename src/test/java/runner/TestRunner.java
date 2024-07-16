@@ -9,10 +9,13 @@ import io.cucumber.testng.CucumberOptions;
 								//  "src/test/java/features/getIncidentswithQP2.feature",
 								//  "src/test/java/features/CreateIncidentwithShort_descCategory.feature",
 								//  "src/test/java/features/CreateIncidentByCategory.feature"
-									"src/test/java/features/CreateIncident.feature",
-								// "src/test/java/features/WK4createIncWithScenarioOutline.feature",
+								//	"src/test/java/features/CreateIncident.feature",
+								// 	"src/test/java/features/WK4createIncWithScenarioOutline.feature",
+									"src/test/java/features/Validation2.feature"
 								//  "src/test/java/features/WK4Ass2Incident.feature"
-								 
+								//	"src/test/java/features/background.feature"
+								//	"src/test/java/features/hooks.feature" 
+							
 		/* "src/test/java/features/WK4Ass2Incident.feature" */
 		/* "src/test/java/features/getIncidents.feature" */
 		/* "src/test/java/features/CreateIncidentwithShort_descCategory.feature" */
@@ -20,7 +23,7 @@ import io.cucumber.testng.CucumberOptions;
 		//"src/test/java/features/getIncidents.feature"
 		}, 
 		glue="steps",
-		/* glue = { "steps","hooks" }, */
+		// glue = { "steps","hooks" }, 
 				//	tags ="@Sanity and @Regression", 
 					monochrome = true, 
 					publish = true)

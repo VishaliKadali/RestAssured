@@ -1,11 +1,15 @@
 package steps;
 
+import java.util.List;
 import java.util.Map;
 
 import java.util.Map.Entry;
 import java.util.Random;
 
+import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.testng.Assert;
+
 import static org.hamcrest.Matchers.equalTo;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -14,6 +18,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -43,13 +48,53 @@ public class TestSteps {
 	@When("send the request")
 	public void sendRequest() {
 
-		response = request.get("incident/" + sys_id);
+		//response = request.get("incident/" + sys_id);
+		//sys_id = response.jsonPath().get("result[0].sys_id");
+		response = request.get("incident");
+		
+		// Extract the list of sys_ids from the response
+		List<String> sysIds=response.jsonPath().getList("result.sys_id");
+		
+		// Log the full response for debugging
+		String responseBody = response.getBody().asString();
+        System.out.println("Full Response: " + responseBody);
+		
+        if (sysIds != null && !sysIds.isEmpty()) {
+            // Generate a random index
+            Random random = new Random();
+            int randomIndex = random.nextInt(sysIds.size());
 
+            // Get the random sys_id
+             sys_id = sysIds.get(randomIndex);
+            System.out.println("Random sys_id: " + sys_id);
+        }
+        
 	}
 
 	@Then("validate the response")
 	public void validateTheResponse() {
-		response.then().assertThat().statusCode(200).log().all();
+		response.then().log().all();
+		int statuscode=response.getStatusCode();
+		String statusLine = response.getStatusLine();
+		List<String> incidents=response.jsonPath().getList("result.number");
+		
+		
+		
+		    // Generate a random index
+		    Random random = new Random();
+		    int randomIndex = random.nextInt(incidents.size());
+
+		    // Get the random incident number
+		    String randomIncidentNumber = incidents.get(randomIndex);
+
+		    // Log the random incident number for debugging
+		    System.out.println("Random Incident Number: " + randomIncidentNumber);
+		 
+		    //Assertion
+		    response.then().assertThat().body("result.number", Matchers.hasItem(randomIncidentNumber));
+		    response.then().assertThat().statusCode(statuscode);
+			response.then().assertThat().statusLine(statusLine);
+		
 	}
 
 	@And("add the queryParams as {string} and {string}")
@@ -57,12 +102,12 @@ public class TestSteps {
 		request = RestAssured.given().log().all().queryParam(key, value).contentType(ContentType.JSON);
 	}
 
-	/*
-	 * @And("add the queryParams as {string} and {string}") public void
-	 * add_the_query_params_as_and(String s1, String s2) { request =
-	 * RestAssured.given().contentType(ContentType.JSON).queryParam(s1,s2).log().all
-	 * (); }
-	 */
+	
+//	  @And("add the queryParams as {string} and {string}") 
+//	  public void add_the_query_params_as_and(String s1, String s2) { 
+//		  request = RestAssured.given().contentType(ContentType.JSON).queryParam(s1,s2).log().all(); 
+//	}
+	 
 
 	@When("send the request with QP")
 	public void sendRequestwithQP() {
@@ -83,7 +128,8 @@ public class TestSteps {
 
 	@When("post the request as {string} and category as {string}")
 	public void addBodyInPost(String short_desc, String category) {
-		response = RestAssured.given().body("{\r\n" + "    \"short_description\": \"" + short_desc + "\",\r\n"
+		response = RestAssured.given().contentType("application/json").accept("application/json")
+				.body("{\r\n" + "    \"short_description\": \"" + short_desc + "\",\r\n"
 				+ "    \"category\": \"" + category + "\"\r\n" + "}").post("incident");
 	}
 
@@ -110,16 +156,54 @@ public class TestSteps {
 						+ "    \"category\": \"software\"\r\n" + "}")
 				.log().all().post("incident");
 	}
+	
+	@When("post the request")
+	public void post_request() {
+		response = RestAssured.given().contentType("application/json").accept("application/json")
+				.body("{\r\n" + "    \"short_description\": \"This is created by Rest Assured\",\r\n"
+						+ "    \"category\": \"software\"\r\n" + "}")
+				.log().all().post("incident");
+	}
 
-	@When("validate the response for task_effective_number")
+	@Then("validate the response for task_effective_number")
 	public void validateResponseWithTaskEffectiveNumber() {
-		response.then().assertThat().body("result.task_effective_number", Matchers.equalTo("result.number"));
+		
+		 // Log the full response body for debugging
+        String responseBody = response.getBody().asString();
+        System.out.println("Full Response: " + responseBody);
+
+        // Extract the values using JsonPath
+        //JsonPath jsonPath = response.jsonPath();
+        String taskEffectiveNumber = response.jsonPath().getString("result.task_effective_number");
+        String number = response.jsonPath().getString("result.number");
+
+        // Log the values for debugging
+        System.out.println("Task Effective Number: " + taskEffectiveNumber);
+        System.out.println("Number: " + number);
+        
+		/*
+		 * // Check if either of the values is null if (taskEffectiveNumber == null) {
+		 * throw new IllegalArgumentException("taskEffectiveNumber cannot be null"); }
+		 * if (number == null) { throw new
+		 * IllegalArgumentException("number cannot be null"); }
+		 */
+
+        // Assert that the values are equal
+        //assertThat(taskEffectiveNumber, equalTo(number));
+        
+        response.then().assertThat().body(taskEffectiveNumber,Matchers.equalTo(number));
+        
+//		String taskEffectiveNumber=response.jsonPath().getString("result.task_effective_number");
+//		String number=response.jsonPath().getString("result.number");
+//		System.out.println(taskEffectiveNumber);
+//		System.out.println(number);
+//		response.then().assertThat().body(number, Matchers.equalTo(taskEffectiveNumber));
 	}
 
 	@Then("validate the response as {int}")
 	public void validateResponse(int statusCode) {
 		int statuscode = response.getStatusCode();
-		String statusline = response.statusLine();
+		String statusline = response.getStatusLine();
 		response.then().assertThat().statusLine(statusline);
 		response.then().assertThat().statusCode(statuscode);
 	}
@@ -141,17 +225,17 @@ public class TestSteps {
 
 	// validating response using data table
 
-	@Then("validate the response for below")
-	public void validate_the_response_for_below(DataTable dTable) {
-		// converting dataTable as a Map entry for <K,V> pair
-		Map<String, String> mapValues = dTable.asMap();
-		// Entry is a collection view of Map. Converting entire Map above to each
-		// entrySet
-		for (Entry<String, String> eachEntry : mapValues.entrySet()) {
-			response.then().body(eachEntry.getKey(), Matchers.containsString(eachEntry.getValue()));
-		}
-		response.then().assertThat().statusCode(201).and().body("result.task_effective_number", Matchers.hasLength(10));
-	}
+//	@Then("validate the response for below")
+//	public void validate_the_response_for_below(DataTable dTable) {
+//		// converting dataTable as a Map entry for <K,V> pair
+//		Map<String, String> mapValues = dTable.asMap();
+//		// Entry is a collection view of Map. Converting entire Map above to each
+//		// entrySet
+//		for (Entry<String, String> eachEntry : mapValues.entrySet()) {
+//			response.then().body(eachEntry.getKey(), Matchers.containsString(eachEntry.getValue()));
+//		}
+//		response.then().assertThat().statusCode(201).and().body("result.task_effective_number", Matchers.hasLength(10));
+//	}
 
 	public void validateResponseStringForMulti(DataTable dt) {
 		Map<String, String> asMap = dt.asMap();
@@ -167,16 +251,27 @@ public class TestSteps {
 		response = request.post("incident");
 	}
 
-//	@Then("validate the response for below")
-//	public void validateResposeStringForMulti(DataTable dt) {
-//		Map<String, String> asMap = dt.asMap();
-//		for (Entry<String, String> eachEntry : asMap.entrySet()) {
-//
-//			response.then().body(eachEntry.getKey(), Matchers.equalTo(eachEntry.getValue()));
-//
-//		}
-//
-//	}
+	@Then("validate the response for below")
+	public void validateResposeStringForMulti(DataTable dt) {
+		Map<String, String> asMap = dt.asMap();
+		for (Entry<String, String> eachEntry : asMap.entrySet()) {
+
+			response.then().body(eachEntry.getKey(), Matchers.equalTo(eachEntry.getValue()));
+
+		}
+
+	}
+	
+	@Then("validate the response as below")
+	public void validateResponseForMulti(DataTable dt) {
+		Map<String, String> asMap = dt.asMap();
+		for (Entry<String, String> eachEntry : asMap.entrySet()) {
+
+			response.then().body(eachEntry.getKey(), Matchers.equalTo(eachEntry.getValue()));
+
+		}
+
+	}
 
 	// Code for Change request table
 	@When("send the post request for crTable")

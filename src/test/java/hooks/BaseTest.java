@@ -11,9 +11,9 @@ public class BaseTest {
 	 * 
 	 * @After public void endTest() { System.out.println("End of the test"); }
 	 */
-	
+	@Before
 	public void setup() {
-		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/";
 		RestAssured.authentication=RestAssured.basic("admin","eJ70Jq$ERc+p");
 	}
 }
