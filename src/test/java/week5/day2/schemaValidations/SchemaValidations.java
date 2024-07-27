@@ -14,8 +14,8 @@ import io.restassured.specification.RequestSpecification;
 public class SchemaValidations {
 	@Test
 	public void createIncident() {
-		RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
-		RestAssured.authentication=RestAssured.basic("admin", "Us/xZ85k@IyN");
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
+		RestAssured.authentication=RestAssured.basic("admin", "eJ70Jq$ERc+p");
 		File file=new File("./src/test/resources/schema.json");
 		RequestSpecification request=RestAssured.given().contentType(ContentType.JSON).log().all();
 		Response response=request.post();

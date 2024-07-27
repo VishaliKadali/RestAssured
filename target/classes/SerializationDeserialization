@@ -1,0 +1,107 @@
+Step 1: Define the Feature File
+Create a feature file (e.g., src/test/resources/features/ChainedRequests.feature):
+
+Create a feature file
+Feature: Chained API Requests
+
+  Scenario: Pass data from Application 1 to Application 2
+    Given I send a GET request to Application 1
+    And I extract the necessary data from the response
+    When I send a POST request to Application 2 with the extracted data
+    Then I should see a successful response from Application 2
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Step 2: Create Step Definitions
+Create a step definition file (e.g., src/test/java/steps/ChainedRequestsSteps.java):
+
+public class ChainedRequestsSteps {
+
+    private String extractedData;
+    private Response app2Response;
+
+    @Given("I send a GET request to Application 1")
+    public void i_send_a_get_request_to_application_1() {
+        // Application 1 details
+        String app1BaseURI = "https://application1.example.com/api";
+        String app1Username = "username1";
+        String app1Password = "password1";
+
+        // Setup RestAssured for Application 1
+        RestAssured.baseURI = app1BaseURI;
+        RestAssured.authentication = RestAssured.basic(app1Username, app1Password);
+
+        // Send GET request to Application 1
+        RequestSpecification app1Request = RestAssured.given().contentType(ContentType.JSON).log().all();
+        Response app1Response = app1Request.get("/endpoint1");
+
+        // Extract necessary data from Application 1's response
+        extractedData = app1Response.jsonPath().getString("dataField"); // Adjust the path as needed
+        System.out.println("Extracted Data from Application 1: " + extractedData);
+    }
+
+    @When("I send a POST request to Application 2 with the extracted data")
+    public void i_send_a_post_request_to_application_2_with_the_extracted_data() {
+        // Application 2 details
+        String app2BaseURI = "https://application2.example.com/api";
+        String app2Username = "username2";
+        String app2Password = "password2";
+
+        // Setup RestAssured for Application 2
+        RestAssured.baseURI = app2BaseURI;
+        RestAssured.authentication = RestAssured.basic(app2Username, app2Password);
+
+        // Send POST request to Application 2
+        RequestSpecification app2Request = RestAssured.given()
+            .contentType(ContentType.JSON)
+            .log().all()
+            .body("{ \"extractedDataField\": \"" + extractedData + "\", \"otherField\": \"value\" }");
+
+        app2Response = app2Request.post("/endpoint2");
+    }
+
+    @Then("I should see a successful response from Application 2")
+    public void i_should_see_a_successful_response_from_application_2() {
+        // Validate the response from Application 2
+        int statusCode = app2Response.getStatusCode();
+        System.out.println("Response from Application 2:");
+        app2Response.prettyPrint();
+        assertEquals(200, statusCode);
+    }
+}
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Step 3: Configure Cucumber Test Runner with TestNG
+Create a test runner file (e.g., src/test/java/runners/TestRunner.java):
+
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "steps",
+    plugin = {"pretty", "html:target/cucumber-reports"},
+    monochrome = true
+)
+public class TestRunner extends AbstractTestNGCucumberTests {
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
+    }
+}
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Step 4: Create TestNG XML File
+Create a TestNG XML configuration file (e.g., testng.xml) to run your Cucumber tests:
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Cucumber Suite" parallel="true">
+    <test name="Cucumber Tests">
+        <classes>
+            <class name="runners.TestRunner"/>
+        </classes>
+    </test>
+</suite> 
+ 
+ 
