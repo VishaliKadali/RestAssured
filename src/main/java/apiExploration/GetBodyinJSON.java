@@ -1,4 +1,4 @@
-package week3.day2;
+package apiExploration;
 
 import java.util.HashMap;
 import java.util.Map;
