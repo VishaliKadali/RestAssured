@@ -1,7 +1,11 @@
 D:\TestLeaf\RestAssured\src\main\java\week3\day1\GetIncidentsbysys_idCategory.java
+D:\TestLeaf\RestAssured\src\main\java\apiExploration\LearnHead.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day1\CreateIncidentWithRandom.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day1\GetIncidentQueryParamsMultiple.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day1\CreateIncwithSys_idCategoryHW.java
+D:\TestLeaf\RestAssured\src\main\java\apiExploration\LearnSerializationDeserialization.java
+D:\TestLeaf\RestAssured\src\main\java\apiExploration\LearnOptions.java
+D:\TestLeaf\RestAssured\src\main\java\apiExploration\GetBodyinJSON.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day1\CreateIncidentwithBodyasFile.java
 D:\TestLeaf\RestAssured\src\main\java\week3\hw\UpdateCR.java
 D:\TestLeaf\RestAssured\src\main\java\week3\hw\EditCR.java
@@ -22,6 +26,7 @@ D:\TestLeaf\RestAssured\src\main\java\week3\day1\GetIncidentQueryParams.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day1\CreateIncidentBasedOnFiles.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day2\TraversingWithMany.java
 D:\TestLeaf\RestAssured\src\main\java\week3\hw\CreateCR.java
+D:\TestLeaf\RestAssured\src\main\java\week3\day1\SampleTest.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day2\IncidentPUT.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day2\chaining\UpdateIncidentVerifyText.java
 D:\TestLeaf\RestAssured\src\main\java\week3\day2\chaining\BaseClass.java

@@ -1,0 +1,7 @@
+steps\TestSteps.class
+hooks\BaseTest.class
+week5\day2\schemaValidations\SchemaValidations.class
+week5\day2\mocking\Stub.class
+week5\day2\mocking\Recorder.class
+week5\day2\staticImports\StaticImports.class
+runner\TestRunner.class

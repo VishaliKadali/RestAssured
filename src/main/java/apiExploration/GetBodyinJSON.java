@@ -42,9 +42,9 @@ public class GetBodyinJSON {
 
        
      // Convert the response body to a JSON object
-//        JsonPath jsonPath = response.jsonPath();
-//        JSONObject jsonResponse = new JSONObject(jsonPath.getMap("$"));
-//        System.out.println("JSON Response: " + jsonResponse.toString(4)); // Pretty print JSON
+        JsonPath jsonPath = response.jsonPath();
+        JSONObject jsonResponse = new JSONObject(jsonPath.getMap("$"));
+        System.out.println("JSON Response: " + jsonResponse.toJSONString()); // Pretty print JSON
 	}
 
 }

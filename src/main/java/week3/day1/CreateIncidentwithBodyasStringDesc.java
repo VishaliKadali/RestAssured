@@ -12,7 +12,7 @@ public class CreateIncidentwithBodyasStringDesc {
 	@Test
 	public void createIncidentwithShortDesc() {
 		
-RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
+		RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
         
 //      Step 3- construct the request (params, auth, etc)
       RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
