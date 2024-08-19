@@ -35,5 +35,5 @@ public class LearnOptions {
             Matchers.containsString("OPTIONS")
         ));
 	}
-
+	//Options will return the methods allowed for particular request
 }

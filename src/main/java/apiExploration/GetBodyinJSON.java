@@ -37,11 +37,12 @@ public class GetBodyinJSON {
 
 		response.prettyPrint();
 		
+		 // Get the response body as a string
 		String responseBody = response.getBody().asString();
         System.out.println("Response Body: " + responseBody);
 
        
-     // Convert the response body to a JSON object
+        // Convert the response body to a JSON object
         JsonPath jsonPath = response.jsonPath();
         JSONObject jsonResponse = new JSONObject(jsonPath.getMap("$"));
         System.out.println("JSON Response: " + jsonResponse.toJSONString()); // Pretty print JSON
