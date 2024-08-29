@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="apiExploration.LearnSerializationDeserialization">
+      <class name="week5.day2.mocking.Recorder">
         <methods>
-          <include name="postIncident"/>
+          <include name="createIncident"/>
         </methods>
-      </class> <!-- apiExploration.LearnSerializationDeserialization -->
+      </class> <!-- week5.day2.mocking.Recorder -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

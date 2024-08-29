@@ -26,7 +26,7 @@ public class Stub {
 	 
 	@Test
 	public void createIncident() {
-		//RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
+		//RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
 		RestAssured.baseURI="http://localhost/api/now/table/incident";
 		RestAssured.authentication=RestAssured.basic("admin", "Us/xZ85k@IyN");
 		RequestSpecification request=RestAssured.given().contentType(ContentType.JSON);

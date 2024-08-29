@@ -2,24 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-19T14:15:18 IST" name="Default suite" finished-at="2024-08-19T14:15:23 IST" duration-ms="5088">
+  <suite started-at="2024-08-28T23:57:06 IST" name="Default suite" finished-at="2024-08-28T23:57:11 IST" duration-ms="4726">
     <groups>
     </groups>
-    <test started-at="2024-08-19T14:15:18 IST" name="Default test" finished-at="2024-08-19T14:15:23 IST" duration-ms="5088">
-      <class name="week3.day2.chaining.CreateIncident">
-        <test-method is-config="true" signature="setup()[pri:0, instance:week3.day2.chaining.CreateIncident@505fc5a4]" started-at="2024-08-19T14:15:18 IST" name="setup" finished-at="2024-08-19T14:15:18 IST" duration-ms="500" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="createIncident()[pri:0, instance:week3.day2.chaining.CreateIncident@505fc5a4]" started-at="2024-08-19T14:15:18 IST" name="createIncident" finished-at="2024-08-19T14:15:23 IST" duration-ms="4553" status="PASS">
+    <test started-at="2024-08-28T23:57:06 IST" name="Default test" finished-at="2024-08-28T23:57:11 IST" duration-ms="4726">
+      <class name="week5.day2.mocking.Recorder">
+        <test-method signature="createIncident()[pri:0, instance:week5.day2.mocking.Recorder@7e5afaa6]" started-at="2024-08-28T23:57:06 IST" name="createIncident" finished-at="2024-08-28T23:57:11 IST" duration-ms="4691" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createIncident -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:week3.day2.chaining.CreateIncident@505fc5a4]" started-at="2024-08-19T14:15:23 IST" name="tearDown" finished-at="2024-08-19T14:15:23 IST" duration-ms="10" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- week3.day2.chaining.CreateIncident -->
+      </class> <!-- week5.day2.mocking.Recorder -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

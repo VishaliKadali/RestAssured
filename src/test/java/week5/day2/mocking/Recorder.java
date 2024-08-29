@@ -11,12 +11,12 @@ import io.restassured.specification.RequestSpecification;
 public class Recorder {
 	@Test
 	public void createIncident() {
-		//RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident";
+		RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident";
 		//Give this in the target url of the wiremock https://dev104781.service-now.com
-		//Once you start recording from wiremock comment RestAssured.baseURI="https://dev104781.service-now.com/api/now/table/incident"; 
+		//Once you start recording from wiremock comment RestAssured.baseURI="https://dev231612.service-now.com/api/now/table/incident"; 
 		//run with local host
-		RestAssured.baseURI="http://localhost/api/now/table/incident";
-		RestAssured.authentication=RestAssured.basic("admin", "Us/xZ85k@IyN");
+		//RestAssured.baseURI="http://localhost/api/now/table/incident";
+		RestAssured.authentication=RestAssured.basic("admin", "eJ70Jq$ERc+p");
 		RequestSpecification request=RestAssured.given().contentType(ContentType.JSON);
 		Response response=request.post();
 		response.prettyPrint();
