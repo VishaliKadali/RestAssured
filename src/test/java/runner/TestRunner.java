@@ -1,8 +1,19 @@
 package runner;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
+import hooks.RetryListener;
+
+@Listeners(RetryListener.class)
 @CucumberOptions(features = { 
 								//  "src/test/java/features/getIncidents.feature",
 								//  "src/test/java/features/getIncidentswithQP.feature",
@@ -21,8 +32,10 @@ import io.cucumber.testng.CucumberOptions;
 		/* "src/test/java/features/CreateIncidentwithShort_descCategory.feature" */
 		//"src/test/java/features/Assign2ChangeRequest.feature",
 		//"src/test/java/features/getIncidents.feature"
-		}, 
+		},
+		plugin = {"pretty", "html:target/cucumber-reports/cucumber-report.html"},
 		glue="steps",
+				
 		// glue = { "steps","hooks" }, 
 				//	tags ="@Sanity and @Regression", 
 					monochrome = true, 
@@ -30,6 +43,32 @@ import io.cucumber.testng.CucumberOptions;
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
+	private String timestamp;
+    private String reportDirPath;
+    
+    @BeforeClass
+    public void setup() {
+        timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        reportDirPath = "target/cucumber-reports-" + timestamp;
+        System.setProperty("cucumber.report.path", reportDirPath);
+        
+        // Ensure the timestamped report directory exists
+        File reportDir = new File(reportDirPath);
+        if (!reportDir.exists()) {
+            reportDir.mkdirs();
+        }
+    }
+
+    @AfterClass
+    public void teardown() {
+        // Move the cucumber report to the new directory if it was generated
+        File sourceReport = new File("target/cucumber-reports/cucumber-report.html");
+        File destReport = new File(reportDirPath, "cucumber-report.html");
+
+        if (sourceReport.exists()) {
+            sourceReport.renameTo(destReport);
+        }
+    }
 }
 
 /*
