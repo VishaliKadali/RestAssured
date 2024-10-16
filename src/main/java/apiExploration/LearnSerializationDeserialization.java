@@ -1,45 +1,36 @@
 package apiExploration;
 
-import org.testng.annotations.Test;
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.annotations.Test;
 
 public class LearnSerializationDeserialization {
 
-	 @Test
-	    public void postIncident() {
+	@Test
+	public void postIncident() {
+	    RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
+	    RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
 
-	        // Set the base URI
-	        RestAssured.baseURI = "https://dev231612.service-now.com/api/now/table/incident";
+	    // Set the default parser
+	    RestAssured.defaultParser = Parser.JSON;
 
-	        // Add the authentication
-	        RestAssured.authentication = RestAssured.basic("admin", "eJ70Jq$ERc+p");
+	    // Make the POST request
+	    Response response = RestAssured.given()
+	        .contentType(ContentType.JSON)
+	        .body("{\n" +
+	              "    \"short_description\": \"This is created by RestAssured\",\n" +
+	              "    \"caller_id\": \"681ccaf9c0a8016400b98a06818d57c7\"\n" +
+	              "}") // Removed sys_id and number
+	        .post();
 
-	        // Create an Incident object (serialization)
-	        Incident incident = new Incident("This is created by RestAssured", "681ccaf9c0a8016400b98a06818d57c7");
+	    // Log the response
+	    response.prettyPrint();
 
-	        // Construct the request and serialize the Incident object to JSON
-	        RequestSpecification request = RestAssured.given()
-	                .contentType(ContentType.JSON)
-	                .body(incident)  // Serialize the Incident object to JSON
-	                .log().all();
+	    // Validate the response
+	    response.then().assertThat().statusCode(201); // or the expected status code
 
-	        // Send the POST request and capture the response
-	        Response response = request.post();
-
-	        // Print the response body
-	        response.prettyPrint();
-
-	        // Deserialize the response JSON back into an Incident object
-	        Incident responseIncident = response.as(Incident.class);
-
-	        // Print the deserialized object's details
-	        System.out.println("Deserialized Incident:");
-	        System.out.println("Short Description: " + responseIncident.getShort_description());
-	        System.out.println("Caller ID: " + responseIncident.getCaller_id());
-	    }
-
+    }
 }
